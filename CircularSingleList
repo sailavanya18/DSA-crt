@@ -1,0 +1,71 @@
+import java.util.*;
+class Node
+{
+int data;
+Node next;
+Node(int x)
+{
+data=x;
+next=null;
+}
+}
+class CircularSingleList{
+Node head;
+CircularSingleList(){
+head=null;
+}
+void create(int x){
+Node n=new Node(x);
+if(head==null){
+head=n;
+n.next=head;
+}
+else{
+Node temp=head;
+while(temp.next!=head)
+{
+temp=temp.next;
+}
+n.next=head;
+temp.next=n;
+}
+}
+void display(){
+if(head==null){
+System.out.println("List is empty");
+return;
+}
+Node temp=head;
+while(temp.next!=head){
+System.out.print(temp.data+" ");
+temp=temp.next;
+}
+System.out.print(temp.data+" ");
+}
+}
+class CList{
+public static void main(String[] args){
+Scanner s=new Scanner(System.in);
+CircularSingleList c1=new CircularSingleList();
+for(;;)
+{
+System.out.println();
+System.out.println("1.create\n2.print\n3.exit");
+System.out.println("Enter your choice:");
+int ch=s.nextInt();
+if(ch==1){
+ System.out.println("enter a element:");
+ int x=s.nextInt();
+c1.create(x);
+}
+else if(ch==2){
+c1.display();
+}
+else if(ch==3)
+break;
+else{
+System.out.println("Invalid choice");
+}
+}
+}
+}
